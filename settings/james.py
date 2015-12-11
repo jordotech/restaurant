@@ -18,11 +18,15 @@ INSTALLED_APPS += (
 SECRET_KEY = os.environ["SECRET_KEY_LOCAL"]
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'restaurant',
-        'USER': 'postgres',
-        'PASSWORD': 'yourpassword goes here',
+        #'USER': 'postgres',
+        'USER': 'root',
+        #'PASSWORD': 'Login4040',
+        'PASSWORD': 'root',
         'HOST': '',
         'PORT': '',
+        'OPTIONS': {'init_command':'SET NAMES "utf8"'}
     },
 }
