@@ -19,6 +19,6 @@ SECRET_KEY = os.environ["SECRET_KEY_LOCAL"]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'restaurant',
+        'NAME': 'mydbfile',
     },
 }
