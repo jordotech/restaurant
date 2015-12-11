@@ -1,5 +1,9 @@
 To setup locally:
 
+Make sure virtualenv is setup properly:
+Add to your ~/.bashrc or ~/.zshrc (depending which you're using) the following anywhere:
+source /usr/local/bin/virtualenvwrapper.sh
+
 1. mkvirtualenv rs
 2. vim ~/.virtualenvs/rs/bin/activate
 3. append these to the end of that file:
