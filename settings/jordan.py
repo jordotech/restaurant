@@ -19,14 +19,16 @@ SECRET_KEY = os.environ["SECRET_KEY_LOCAL"]
 DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'restaurant',
+        #'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': 'restaurant',
+        'NAME': 'mydatabase',
         #'USER': 'postgres',
-        'USER': 'root',
+        #'USER': 'root',
         #'PASSWORD': 'Login4040',
-        'PASSWORD': 'root',
-        'HOST': '',
-        'PORT': '',
-        'OPTIONS': {'init_command':'SET NAMES "utf8"'}
+        #'PASSWORD': 'root',
+        #'HOST': '',
+        #'PORT': '',
+        #'OPTIONS': {'init_command':'SET NAMES "utf8"'}
     },
 }
