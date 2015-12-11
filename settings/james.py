@@ -20,8 +20,5 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'restaurant',
-        'HOST': '',
-        'PORT': '',
-        'OPTIONS': {'init_command':'SET NAMES "utf8"'}
     },
 }
