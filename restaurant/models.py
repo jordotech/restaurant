@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Restaurants(models.Model):
     name = models.CharField("Name", max_length=255, blank=True, null=True)
@@ -9,6 +10,16 @@ class Restaurants(models.Model):
     iso = models.CharField(('Country'), max_length=2, blank=True, null=True)
     latitude = models.FloatField(('latitude'), blank=True, null=True)
     longitude = models.FloatField(('longitude'), blank=True, null=True)
+    @property
+    def average(self):
+        ws=self.waittime_set.all()
+        count = self.waittime_set.count()
+        if count < 1:
+            return 0
+        total = 0
+        for w in ws:
+            total += w.waittime
+        return total/count
 
     class Meta:
         verbose_name = 'Restaurant'
@@ -19,6 +30,7 @@ class Restaurants(models.Model):
 
 
 class Waittime(models.Model):
+    user = models.ForeignKey(User, related_name='user_set', blank=True, null=True)
     restaurant = models.ForeignKey(Restaurants, related_name='waittime_set')
     created = models.DateTimeField(auto_now_add=True, editable=False)
     waittime = models.IntegerField(blank=True,null=True, help_text=("Wait time in seconds."))
