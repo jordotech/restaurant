@@ -10,6 +10,8 @@ class Restaurants(models.Model):
     iso = models.CharField(('Country'), max_length=2, blank=True, null=True)
     latitude = models.FloatField(('latitude'), blank=True, null=True)
     longitude = models.FloatField(('longitude'), blank=True, null=True)
+    slug = models.CharField(('Slug'), max_length=140, blank=True, null=True, help_text=("Used for automatically generating URLs like '/restaurants/potato_shack'."))
+
     @property
     def average(self):
         ws=self.waittime_set.all()
@@ -27,6 +29,12 @@ class Restaurants(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        if self.slug:
+            return "/storelocator/%s" %(self.slug)
+        else:
+            return "werwer"
 
 
 class Waittime(models.Model):
