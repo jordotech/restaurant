@@ -2,10 +2,19 @@ from django.contrib import admin
 from .models import *
 
 class RestaurantAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'province',)
+    def average(self, object):
+        ws=object.waittime_set.all()
+        count = object.waittime_set.count()
+        if count < 1:
+            return 0
+        total = 0
+        for w in ws:
+            total += w.waittime
+        return total/count
+    list_display = ('id', 'name', 'province', 'average')
     #ordering = ['postalcode', ]
-    #list_filter = ['iso', ]
-    #search_fields = ('state', 'city', 'iso', 'postalcode')
+    list_filter = ['province',]
+    search_fields = ('name',)
 
 class WaittimeAdmin(admin.ModelAdmin):
     list_display = ('id', 'restaurant', 'waittime', 'created')
