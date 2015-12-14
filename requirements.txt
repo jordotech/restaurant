@@ -6,3 +6,5 @@ django-debug-toolbar
 South==0.8.4
 Fabric==1.9.0
 #MySQL-python==1.2.5
+django-extensions==1.4.0
+ipython==2.2.0
